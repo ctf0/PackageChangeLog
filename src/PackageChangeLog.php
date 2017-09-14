@@ -36,8 +36,8 @@ class PackageChangeLog
     public function __construct(Filesystem $files)
     {
         $this->files        = $files;
-        $this->logTempPath  = storage_path('logs/packagesLogs.php');
-        $this->vendorPath   = base_path() . '/vendor';
+        $this->logTempPath  = getcwd() . '/storage/logs/packagesLogs.php';
+        $this->vendorPath   = getcwd() . '/vendor';
     }
 
     /**
@@ -56,19 +56,17 @@ class PackageChangeLog
             $latest_version = $v['version'];
             $log_file       = $this->files->glob("$package_path/$log_path/$latest_version.*");
 
-            if (empty($log_file)) {
+            if (!$log_file) {
                 continue;
             }
 
-            if ($this->files->exists($log_file[0])) {
-                $content[$k] = [
-                    'log' => $this->files->get($log_file[0]),
-                    'ver' => $latest_version,
-                ];
+            $content[$k] = [
+                'log' => $this->files->get($log_file[0]),
+                'ver' => $latest_version,
+            ];
 
-                // rename file so we dont display it again
-                $this->files->move($log_file[0], "$package_path/$log_path/$latest_version");
-            }
+            // rename file so we dont display it again
+            $this->files->move($log_file[0], "$package_path/$log_path/$latest_version");
         }
 
         return $content;
@@ -86,10 +84,10 @@ class PackageChangeLog
         }
 
         $data = collect($packages)->map(function ($package) {
-            if (isset($package['extra']['laravel']['changeLog'])) {
+            if (isset($package['extra']['changeLog'])) {
                 return [
                     $this->format($package['name']) => [
-                        'log_path' => $package['extra']['laravel']['changeLog'],
+                        'log_path' => $package['extra']['changeLog'],
                         'version'  => $package['version'],
                     ],
                 ];

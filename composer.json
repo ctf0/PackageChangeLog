@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "illuminate/support": "~5.5",
+        "illuminate/support": "~5.0",
         "php" : "~7.0"
     },
     "autoload": {
@@ -27,9 +27,9 @@
         "laravel": {
             "providers": [
                 "ctf0\\PackageChangeLog\\PackageChangeLogServiceProvider"
-            ],
-            "changeLog": "logs"
-        }
+            ]
+        },
+        "changeLog": "logs"
     },
     "config": {
         "sort-packages": true
