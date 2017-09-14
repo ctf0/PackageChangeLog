@@ -61,7 +61,10 @@ class PackageChangeLog
             }
 
             if ($this->files->exists($log_file[0])) {
-                $content[$k] = $this->files->get($log_file[0]);
+                $content[$k] = [
+                    'log' => $this->files->get($log_file[0]),
+                    'ver' => $latest_version,
+                ];
 
                 // rename file so we dont display it again
                 $this->files->move($log_file[0], "$package_path/$log_path/$latest_version");

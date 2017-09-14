@@ -30,9 +30,9 @@ class PackageChangeLogCommand extends Command
     {
         $packages->build();
 
-        foreach ($packages->changelogs() as $name => $log) {
-            $this->alert("\"$name\" ChangeLog:");
-            $this->info($log);
+        foreach ($packages->changelogs() as $name => $v) {
+            $this->alert("\"$name\" {$v['ver']} ChangeLog:");
+            $this->info($v['log']);
         }
     }
 }

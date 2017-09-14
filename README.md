@@ -1,10 +1,14 @@
+<p align="center">
+    <img src="demo.png">
+</p>
+
 ### The Problem
 
 usually when a package gets updated, the package owner could possibly add/change/remove something in the configuration file,
 or could add a new feature that he/she didnt have time to add to the readme yet,
 or for whatever reason that could potentially effect how you use the package.
 
-and therefor this package was made, more of an opt-in feature that you can use to help your users stay up-to-date with the any changes as new releases gets published.
+and therefor this package was made, more of an opt-in feature that you can use to help your users stay up-to-date with any changes as new releases gets published.
 
 # Installation
 
@@ -47,7 +51,7 @@ and therefor this package was made, more of an opt-in feature that you can use t
    |-------------|---------------|
    | v1.0.0      | v1.0.0.txt    |
 
-- we dont use any parsers for the log file, so whatever you add in that file it will be displayed as it is to the user.
+- we dont use any parsers for the log file, so whatever you write in the file it will be displayed as it is to the user.
 
 ## Limitations
 We rely on `/vendor/composer/installed.json` to check which installed package have the key `changeLog`, but as composer rebuild this file on package installation or removal only,
