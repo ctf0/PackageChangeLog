@@ -43,7 +43,7 @@ and therefor this package was made, more of an opt-in feature that you can use t
 ```
 
 - inside that folder add the log files
-> note that the version have to be equal "==" to the tag version on whatever version control you are using because we check against that version b4 showing the log.
+> note that the version have to be equal "==" to the release tag because we check against that version b4 showing the log.
 >
 > this is useful incase you dont/didnt add changelog for the current published version.
 
