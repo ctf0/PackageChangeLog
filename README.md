@@ -59,11 +59,8 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
 
 - we don't use any parsers for the log file, so whatever you write in the file, will be displayed the user as it is.
 
-## Limitations
-We rely on `/vendor/composer/installed.json` to check which installed package have the key `changeLog`, but as composer rebuild this file on package installation or removal only, we need to find a way to update it on `composer update` as well.
-
 ## ToDO
 
 - auto run `php artisan package:changelog` internally after a new package is installed/updated instead of `post-autoload-dump`.
 
-- decouple the package of laravel so everyone can use it.
+- decouple from laravel so everyone can use it.

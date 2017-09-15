@@ -12,7 +12,7 @@ class PackageChangeLogServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->commands([
-            Commands\PackageChangeLogCommand::class,
+            Commands\PCLCommand::class,
         ]);
     }
 }

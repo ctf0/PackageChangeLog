@@ -2,10 +2,10 @@
 
 namespace ctf0\PackageChangeLog\Commands;
 
+use ctf0\PackageChangeLog\Ops;
 use Illuminate\Console\Command;
-use ctf0\PackageChangeLog\PackageChangeLog;
 
-class PackageChangeLogCommand extends Command
+class PCLCommand extends Command
 {
     /**
      * The console command signature.
@@ -19,17 +19,15 @@ class PackageChangeLogCommand extends Command
      *
      * @var string
      */
-    protected $description = 'show package changelog';
+    protected $description = 'Show Packages ChangeLog';
 
     /**
      * Execute the console command.
      *
      * @param  \Illuminate\Foundation\PackageManifest
      */
-    public function handle(PackageChangeLog $packages)
+    public function handle(Ops $packages)
     {
-        $packages->build();
-
         $logs = $packages->changelogs();
 
         if (!$logs) {
