@@ -12,7 +12,10 @@ class PackageChangeLogServiceProvider extends ServiceProvider
             Commands\PCLCommand::class,
         ]);
 
-        $this->autoReg();
+        // append event
+        if (!app('cache')->store('file')->has('ct-pcl')) {
+            $this->autoReg();
+        }
     }
 
     protected function autoReg()
@@ -60,6 +63,11 @@ EOT;
             $final = str_replace('\/', '/', $json);
             file_put_contents($comp_file, $final);
         }
+
+        // run check once
+        app('cache')->store('file')->remember('ct-pcl', 10080, function () {
+            return 'added';
+        });
     }
 
     protected function checkExist($file, $search)
