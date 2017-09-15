@@ -3,6 +3,7 @@
     "description": "show package changeLog on install/update",
     "homepage": "https://github.com/ctf0/PackageChangeLog",
     "license": "MIT",
+    "type": "composer-plugin",
     "keywords": [
         "ctf0",
         "laravel",
@@ -30,6 +31,9 @@
             ]
         },
         "changeLog": "logs"
+    },
+    "scripts": {
+        "post-autoload-dump": "ctf0\\PackageChangeLog\\Events::postAutoloadDump"
     },
     "config": {
         "sort-packages": true
