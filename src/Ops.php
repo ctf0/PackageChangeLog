@@ -6,6 +6,8 @@ use Exception;
 
 class Ops
 {
+    use EventTrait;
+
     public $vendorPath;
     public $logManifest;
     public $refPath;

@@ -22,19 +22,11 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
 ]
 ```
 
-- add `"@php artisan package:changelog"` to your **"project"** composer.json
+- after installation, package will auto-register
+  + `App\\Providers\\EventServiceProvider::postAutoloadDump` @composer.json `post-autoload-dump`
+  + `postAutoloadDump` method @ `App\Providers\EventServiceProvider`
 
-```js
-"scripts": {
-    ...
-
-    "post-autoload-dump": [
-        ...
-
-        "@php artisan package:changelog"
-    ]
-},
-```
+- **Note** that logs will be shown from the next time composer gets executed.
 
 ## Usage
 
@@ -58,9 +50,3 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
    | v1.0.0      | v1.0.0.txt    |
 
 - we don't use any parsers for the log file, so whatever you write in the file, will be displayed the user as it is.
-
-## ToDO
-
-- auto run `php artisan package:changelog` internally after a new package is installed/updated instead of `post-autoload-dump`.
-
-- decouple from laravel so everyone can use it.

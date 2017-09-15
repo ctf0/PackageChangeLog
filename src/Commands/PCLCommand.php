@@ -31,7 +31,7 @@ class PCLCommand extends Command
         $logs = $packages->changelogs();
 
         if (!$logs) {
-            $this->comment(' - Nothing To Display');
+            $this->alert('No Available ChangeLogs At The Moment');
         } else {
             foreach ($logs as $name => $v) {
                 $this->alert("\"$name\" {$v['ver']} ChangeLog:");

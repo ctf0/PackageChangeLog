@@ -1,2 +1,0 @@
-- move changelog outside laravel
-- show message if not logs are found
