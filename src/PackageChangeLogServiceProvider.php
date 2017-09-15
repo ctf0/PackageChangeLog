@@ -56,7 +56,9 @@ EOT;
             $res  = json_decode(file_get_contents($comp_file), true);
 
             array_push($res['scripts']['post-autoload-dump'], $data);
-            file_put_contents($comp_file, json_encode($res, JSON_PRETTY_PRINT));
+            $json  = json_encode($res, JSON_PRETTY_PRINT);
+            $final = str_replace('\/', '/', $json);
+            file_put_contents($comp_file, $final);
         }
     }
 
