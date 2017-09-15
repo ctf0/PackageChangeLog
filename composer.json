@@ -30,6 +30,7 @@
                 "ctf0\\PackageChangeLog\\PackageChangeLogServiceProvider"
             ]
         },
+        "class": "ctf0\\PackageChangeLog\\Events",
         "changeLog": "logs"
     },
     "scripts": {
