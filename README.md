@@ -12,6 +12,8 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
 
 # Installation
 
+> This is more of a **utility** package directed towards developers & to get the best of it you have to add it to your package, however to test it you can install it like any other package & run `composer dump-autoload` afterwards.
+
 - `composer require ctf0/package-changelog`
 
 - (Laravel < 5.5) add the service provider to `config/app.php`
@@ -30,14 +32,19 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
 
 ## Usage
 
-- add `"changeLog": "log_folder_name"` to your **"package"** composer.json, ex.`logs`
+- inside your **"package"** composer.json
+    + add the package as a dependency
+    + add `"changeLog": "log_folder_name"` to extra
 
 ```js
-"extra": {
-  // ...
-
-  "changeLog": "logs"
+"require": {
+    // ...
+    "ctf0/package-changelog": "^1.0"
 },
+"extra": {
+    // ...
+    "changeLog": "logs"
+}
 ```
 
 - inside that folder add the log files
