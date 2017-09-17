@@ -8,11 +8,6 @@ class PackageChangeLogServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->commands([
-            Commands\PCLCommand::class,
-        ]);
-
-        // append event
         if (!app('cache')->store('file')->has('ct-pcl')) {
             $this->autoReg();
         }

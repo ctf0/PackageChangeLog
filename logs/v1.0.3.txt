@@ -1,1 +1,0 @@
-- found a solution for auto-reg event

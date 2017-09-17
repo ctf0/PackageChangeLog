@@ -13,17 +13,8 @@ trait EventTrait
      */
     public static function postAutoloadDump($event)
     {
-        $ops  = new self();
-        $logs = $ops->changelogs();
-
-        if (!$logs) {
-            static::alert('No Available ChangeLogs At The Moment', $event);
-        } else {
-            foreach ($logs as $name => $v) {
-                static::alert("\"$name\" {$v['ver']} ChangeLog:", $event);
-                static::info($v['log'], $event);
-            }
-        }
+        (new self())->buildLogs($event);
+        $event->getIO()->write('');
     }
 
     /**
@@ -34,25 +25,25 @@ trait EventTrait
      *
      * @return [type] [description]
      */
-    public static function alert($string, $event)
+    public function alert($string, $event)
     {
-        static::comment(str_repeat('*', strlen($string) + 12), $event);
-        static::comment('*     ' . $string . '     *', $event);
-        static::comment(str_repeat('*', strlen($string) + 12), $event);
+        $this->comment(str_repeat('*', strlen($string) + 12), $event);
+        $this->comment('*     ' . $string . '     *', $event);
+        $this->comment(str_repeat('*', strlen($string) + 12), $event);
     }
 
-    public static function comment($string, $event)
+    public function comment($string, $event)
     {
-        static::line($string, 'comment', $event);
+        $this->line($string, 'comment', $event);
     }
 
-    public static function info($string, $event)
+    public function info($string, $event)
     {
-        static::line($string, 'info', $event);
+        $this->line($string, 'info', $event);
     }
 
-    public static function line($string, $style, $event)
+    public function line($string, $style, $event)
     {
-        return $event->getIO()->write("<$style>$string</$style>");
+        $event->getIO()->write("<$style>$string</$style>");
     }
 }
