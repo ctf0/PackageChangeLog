@@ -60,7 +60,7 @@ EOT;
         }
 
         // run check once
-        app('cache')->store('file')->remember('ct-pcl', 10080, function () {
+        app('cache')->store('file')->rememberForever('ct-pcl', function () {
             return 'added';
         });
     }

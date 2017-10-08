@@ -2,15 +2,15 @@
     <img src="https://user-images.githubusercontent.com/7388088/30776152-e2be70d6-a0a1-11e7-9793-0584a5ecb9f8.png">
 </p>
 
-### Intro
+# PackageChangeLog
 
 usually when a package gets updated, the package owner could possibly add/change/remove something from the configuration file,
-or could add a new feature that he/she didn't have time to add to the readme yet,
+or could add a new feature that he/she didn't have time to add to the read me yet,
 or for whatever reason that could potentially effect how the user consume the package.
 
 Therefor **PackageChangeLog** was made, to help developers keep their packages as user friendly as possible and keep the users up-to-date with new changes as releases gets published.
 
-# Installation
+## Installation
 
 > This is more of a **utility** package directed towards developers & to get the best of it you have to add it to your package, however to test it you can install it like any other package & run `composer dump-autoload` afterwards.
 
@@ -48,12 +48,13 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
 ```
 
 - inside that folder add the log files
-> note that the version have to be equal "==" to the release tag because we check against that version b4 showing the log.
->
-> this is useful in-case you don't/didn't add changeLogs for the current published version.
+
+    > note that the version have to be equal "==" to the release tag because we check against that version b4 showing the log.
+    >
+    > this is useful in-case you don't/didn't add changeLogs for the current published version.
 
    | release tag | log file name |
    |-------------|---------------|
    | v1.0.0      | v1.0.0.txt    |
 
-- we don't use any parsers for the log file, so whatever you write in the file, will be displayed the user as it is.
+- we don't use any parsers for the log file, so whatever you write in the file, will be displayed to the user as it is.
