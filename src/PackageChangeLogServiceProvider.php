@@ -53,10 +53,12 @@ EOT;
             $data = 'App\\Providers\\' . $search;
             $res  = json_decode(file_get_contents($comp_file), true);
 
-            array_push($res['scripts']['post-autoload-dump'], $data);
-            $json  = json_encode($res, JSON_PRETTY_PRINT);
-            $final = str_replace('\/', '/', $json);
-            file_put_contents($comp_file, $final);
+            if (array_get($res, 'scripts.post-autoload-dump')) {
+                array_push($res['scripts']['post-autoload-dump'], $data);
+                $json  = json_encode($res, JSON_PRETTY_PRINT);
+                $final = str_replace('\/', '/', $json);
+                file_put_contents($comp_file, $final);
+            }
         }
 
         // run check once
