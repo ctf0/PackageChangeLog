@@ -67,6 +67,14 @@ EOT;
         });
     }
 
+    /**
+     * [checkExist description].
+     *
+     * @param [type] $file   [description]
+     * @param [type] $search [description]
+     *
+     * @return [type] [description]
+     */
     protected function checkExist($file, $search)
     {
         return str_contains(file_get_contents($file), $search);
