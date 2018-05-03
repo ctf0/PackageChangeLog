@@ -17,20 +17,6 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
 
 - `composer require ctf0/package-changelog`
 
-- (Laravel < 5.5) add the service provider to `config/app.php`
-
-  ```php
-  'providers' => [
-      ctf0\PackageChangeLog\PackageChangeLogServiceProvider::class,
-  ]
-  ```
-
-- after installation, package will auto-register
-  + `App\\Providers\\EventServiceProvider::postAutoloadDump` @**composer.json**
-  + `postAutoloadDump`  @**App\Providers\EventServiceProvider**
-
-<br>
-
 ## Usage
 
 - inside your **"package"** composer.json
@@ -63,4 +49,4 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
 
 - we don't use any parser for the log file, so whatever you write in the file will be displayed to the user as it is.
 
-- This is more of a **utility** package directed towards developers & to get the best of it you have to add it to your package, however to test it you can install it like any other package & run `composer dump-autoload` afterwards.
+- This is more of a **utility** package directed towards developers & to get the best of it you have to add it to your package, however to test it you can install it like any other package & you would get a message like the screenshot above.

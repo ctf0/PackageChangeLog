@@ -2,30 +2,23 @@
 
 namespace ctf0\PackageChangeLog;
 
-class Ops
+trait Ops
 {
-    use EventTrait;
-
-    protected $vendorPath;
-
-    public function __construct()
-    {
-        $this->vendorPath = base_path() . '/vendor';
-    }
-
     /**
      * [buildLogs description].
      *
      * @param mixed $event
+     * @param mixed $type
      *
      * @return [type] [description]
      */
-    public function buildLogs($event)
+    public function buildLogs($event, $type = 'update')
     {
-        $refPath  = '/composer/installed.json';
-        $packages = [];
+        $vendorPath = $event->getComposer()->getConfig()->get('vendor-dir');
+        $refPath    = '/composer/installed.json';
+        $packages   = [];
 
-        if (file_exists($path = "{$this->vendorPath}{$refPath}")) {
+        if (file_exists($path = "{$vendorPath}{$refPath}")) {
             $packages = json_decode(file_get_contents($path), true);
         }
 
@@ -33,11 +26,13 @@ class Ops
 
         foreach ($packages as $one) {
             if (isset($one['extra']['changeLog'])) {
-                $name           = $this->format($one['name']);
+                $name           = $this->format($vendorPath, $one['name']);
                 $log_path       = $one['extra']['changeLog'];
                 $version        = $one['version'];
-                $package_path   = "$this->vendorPath/{$name}";
-                $log_file       = glob("$package_path/$log_path/$version.*");
+                $package_path   = "$vendorPath/{$name}";
+                $log_file       = $type == 'install'
+                    ? glob("$package_path/$log_path/install.*")
+                    : glob("$package_path/$log_path/$version.*");
 
                 if (!$log_file) {
                     continue;
@@ -57,15 +52,48 @@ class Ops
         if ($no_log) {
             $this->alert('No Available ChangeLogs At The Moment', $event);
         }
+
+        $event->getIO()->write('');
     }
 
     /**
      * Format the given package name.
      *
      * @param mixed $package
+     * @param mixed $vendorPath
      */
-    protected function format($package)
+    protected function format($vendorPath, $package)
     {
-        return str_replace("{$this->vendorPath}/", '', $package);
+        return str_replace("{$vendorPath}/", '', $package);
+    }
+
+    /**
+     * helpers.
+     *
+     * @param [type] $string [description]
+     * @param [type] $event  [description]
+     *
+     * @return [type] [description]
+     */
+    public function alert($string, $event)
+    {
+        $this->comment(str_repeat('*', strlen($string) + 12), $event);
+        $this->comment('*     ' . $string . '     *', $event);
+        $this->comment(str_repeat('*', strlen($string) + 12), $event);
+    }
+
+    public function comment($string, $event)
+    {
+        $this->line($string, 'comment', $event);
+    }
+
+    public function info($string, $event)
+    {
+        $this->line($string, 'info', $event);
+    }
+
+    public function line($string, $style, $event)
+    {
+        $event->getIO()->write("<$style>$string</$style>");
     }
 }
