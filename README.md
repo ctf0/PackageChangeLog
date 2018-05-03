@@ -35,13 +35,20 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
   ```
 
 - inside that folder add the log files
+  - install
+    > if you want to show a log on new installation only, then just add a file names `install.txt` and we will display it only when the package gets installed for the first time.
 
+    | release tag | log file name |
+    |-------------|---------------|
+    | any_thing   | install.txt   |
+
+  - update
     > the version have to be equal "==" to the release tag because we check against that version b4 showing the log.
     > this is useful in-case you didn't add a changeLog for the current published version.
 
-   | release tag | log file name |
-   |-------------|---------------|
-   | v1.0.0      | v1.0.0.txt    |
+    | release tag | log file name |
+    |-------------|---------------|
+    | v1.0.0      | v1.0.0.txt    |
 
 <br>
 
