@@ -44,7 +44,7 @@ class Events
      */
     public static function prePackageUpdate(Event $event)
     {
-        $comp_file = __DIR__ . '/composer.json';
+        $comp_file = dirname($event->getComposer()->getConfig()->get('vendor-dir')) . '/composer.json';
         $search    = 'App\\Providers\\EventServiceProvider::postAutoloadDump';
         $exist     = str_contains(file_get_contents($comp_file), $search);
 
