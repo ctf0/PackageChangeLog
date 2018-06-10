@@ -8,7 +8,7 @@ class PackageChangeLogServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        if (!app('cache')->store('file')->has('ct-pcl')) {
+        if (!$this->app['cache']->store('file')->has('ct-pcl')) {
             $this->autoReg();
         }
     }
@@ -62,7 +62,7 @@ EOT;
         }
 
         // run check once
-        app('cache')->store('file')->rememberForever('ct-pcl', function () {
+        $this->app['cache']->store('file')->rememberForever('ct-pcl', function () {
             return 'added';
         });
     }
