@@ -8,7 +8,9 @@ class PackageChangeLogServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        if (!$this->app['cache']->store('file')->has('ct-pcl')) {
+        if (file_exists(base_path() . '/composer.json') && 
+            !$this->app['cache']->store('file')->has('ct-pcl')
+        ) {
             $this->autoReg();
         }
     }
