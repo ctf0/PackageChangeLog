@@ -8,7 +8,7 @@ class PackageChangeLogServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        if (file_exists(base_path() . '/composer.json') && 
+        if (file_exists(base_path() . '/composer.json') &&
             !$this->app['cache']->store('file')->has('ct-pcl')
         ) {
             $this->autoReg();
@@ -55,7 +55,7 @@ EOT;
             $data = 'App\\Providers\\' . $search;
             $res  = json_decode(file_get_contents($comp_file), true);
 
-            if (array_get($res, 'scripts.post-autoload-dump')) {
+            if ($res['scripts']['post-autoload-dump']) {
                 array_push($res['scripts']['post-autoload-dump'], $data);
                 $json  = json_encode($res, JSON_PRETTY_PRINT);
                 $final = str_replace('\/', '/', $json);
