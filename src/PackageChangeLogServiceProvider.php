@@ -2,6 +2,7 @@
 
 namespace ctf0\PackageChangeLog;
 
+use Illuminate\Support\Str;
 use Illuminate\Support\ServiceProvider;
 
 class PackageChangeLogServiceProvider extends ServiceProvider
@@ -71,6 +72,6 @@ EOT;
 
     protected function checkExist($file, $search)
     {
-        return str_contains(file_get_contents($file), $search);
+        return Str::contains(file_get_contents($file), $search);
     }
 }
