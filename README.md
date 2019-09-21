@@ -41,7 +41,7 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
     ```js
     "require": {
         // ...
-        "ctf0/package-changelog": "^1.0"
+        "ctf0/package-changelog": "*"
     },
     "extra": {
         // ...
