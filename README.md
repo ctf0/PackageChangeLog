@@ -18,6 +18,8 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
 
 - `composer require ctf0/package-changelog`
 
+<br>
+
 ## Usage
 
 - inside your **"package"** composer.json
