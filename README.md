@@ -1,5 +1,5 @@
 <h1 align="center">
-    PackageChangeLog
+    PackageChangeLog V2
     <br>
     <a href="https://packagist.org/packages/ctf0/package-changelog"><img src="https://img.shields.io/packagist/v/ctf0/package-changelog.svg" alt="Latest Stable Version" /></a> <a href="https://packagist.org/packages/ctf0/package-changelog"><img src="https://img.shields.io/packagist/dt/ctf0/package-changelog.svg" alt="Total Downloads" /></a>
 </h1>
@@ -17,6 +17,22 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
 ## Installation
 
 - `composer require ctf0/package-changelog`
+- under `composer.json` we will auto add
+    + check [composer docs](https://getcomposer.org/doc/articles/scripts.md#what-is-a-script-) for more info
+
+    ```json
+    "scripts": {
+        "post-install-cmd": [
+            "@php artisan pcl:post-install"
+        ],
+        "post-update-cmd": [
+            "@php artisan pcl:post-update"
+        ],
+        "pre-package-uninstall": [
+            "@php artisan pcl:pre-uninstall"
+        ]
+    }
+    ```
 
 <br>
 
@@ -29,7 +45,7 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
   ```js
   "require": {
       // ...
-      "ctf0/package-changelog": "^1.0"
+      "ctf0/package-changelog": "^2.0"
   },
   "extra": {
       // ...
@@ -38,19 +54,26 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
   ```
 
 - inside that folder add the log files
-  - install
-    > if you want to show a log on new installation only, then just add a file names `install.txt` and we will display it only when the package gets installed for the first time.
+    - install `post-install-cmd`
+    > if you want to show a log on installation only, then add a file name `install.txt` and we will display it only when the package gets installed for the first time.
 
     | release tag | log file name |
-    |-------------|---------------|
-    | any_thing   | install.txt   |
+    | ----------- | ------------- |
+    | *           | install.txt   |
 
-  - update
+    - uninstall `pre-package-uninstall`
+    > if you want to show a log on un-installation only, then add a file name `uninstall.txt` and we will display it only when the package gets uninstalled.
+
+    | release tag | log file name |
+    | ----------- | ------------- |
+    | *           | uninstall.txt |
+
+    - update `post-update-cmd`
     > the version have to be equal "==" to the release tag because we check against that version b4 showing the log.
     > this is useful in-case you didn't add a changeLog for the current published version.
 
     | release tag | log file name |
-    |-------------|---------------|
+    | ----------- | ------------- |
     | v1.0.0      | v1.0.0.txt    |
 
 <br>

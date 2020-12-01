@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "php" : "~7.0"
+        "php": "~7.0"
     },
     "autoload": {
         "psr-4": {
@@ -26,10 +26,5 @@
     },
     "config": {
         "sort-packages": true
-    },
-    "scripts": {
-        "pre-package-update": ["ctf0\\PackageChangeLog\\Events::prePackageUpdate"],
-        "post-install-cmd": ["ctf0\\PackageChangeLog\\Events::postInstallCmd"],
-        "post-update-cmd": ["ctf0\\PackageChangeLog\\Events::postUpdateCmd"]
     }
 }

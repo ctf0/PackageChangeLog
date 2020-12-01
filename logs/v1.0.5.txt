@@ -1,3 +1,0 @@
-- remove cmnd
-- remove the 3 loops & now search and output directly
-- remove image and use link
