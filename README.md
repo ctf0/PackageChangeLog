@@ -17,14 +17,7 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
 ## Installation
 
 - `composer require ctf0/package-changelog`
-- (Laravel < 5.5) add the service provider to `config/app.php`
-
-    ```php
-    'providers' => [
-        ctf0\PackageChangeLog\PackageChangeLogServiceProvider::class,
-    ]
-    ```
-- under `composer.json` we will auto add
+- after installation, package will auto-register the below to `composer.json`
     + check [composer docs](https://getcomposer.org/doc/articles/scripts.md#what-is-a-script-) for more info
 
     ```json

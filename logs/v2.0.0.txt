@@ -1,4 +1,5 @@
-- we now use commands instead of events `composer.json` file, so plz remove the old setup from v1
+- we now use commands instead of events, so plz remove the v1 setup if you still have
+
 + composer.json --> 'App\\Providers\\EventServiceProvider::postAutoloadDump'
 + app\Providers\EventServiceProvider -->
 ```
