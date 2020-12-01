@@ -1,0 +1,14 @@
+- we now use commands instead of events `composer.json` file, so plz remove the old setup from v1
++ composer.json --> 'App\\Providers\\EventServiceProvider::postAutoloadDump'
++ app\Providers\EventServiceProvider -->
+```
+/**
+* "ctf0/package-changelog".
+*/
+public static function postAutoloadDump(\Composer\Script\Event $event)
+{
+   if (class_exists('ctf0\PackageChangeLog\Ops')) {
+       return \ctf0\PackageChangeLog\Ops::postAutoloadDump($event);
+   }
+}
+```

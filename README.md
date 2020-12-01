@@ -17,7 +17,6 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
 ## Installation
 
 - `composer require ctf0/package-changelog`
-
 - (Laravel < 5.5) add the service provider to `config/app.php`
 
     ```php
@@ -25,11 +24,23 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
         ctf0\PackageChangeLog\PackageChangeLogServiceProvider::class,
     ]
     ```
+- under `composer.json` we will auto add
+    + check [composer docs](https://getcomposer.org/doc/articles/scripts.md#what-is-a-script-) for more info
 
-- after installation, package will auto-register ["Why we need that ?"](https://getcomposer.org/doc/articles/scripts.md#what-is-a-script-)
-    + `App\\Providers\\EventServiceProvider::postAutoloadDump` @**composer.json**
-    + `postAutoloadDump`  @**App\Providers\EventServiceProvider**
-
+    ```json
+    "scripts": {
+        "post-install-cmd": [
+            "@php artisan pcl:post-install"
+        ],
+        "post-update-cmd": [
+            "@php artisan pcl:post-update"
+        ],
+        "pre-package-uninstall": [
+            "@php artisan pcl:pre-uninstall"
+        ]
+    }
+    ```
+    
 <br>
 
 ## Usage
@@ -37,11 +48,11 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
 - inside your **"package"** composer.json
     + add the package as a dependency
     + add `"changeLog": "log_folder_name"` to extra
-
+    
     ```js
     "require": {
         // ...
-        "ctf0/package-changelog": "*"
+        "ctf0/package-changelog": "^2.0"
     },
     "extra": {
         // ...
@@ -50,12 +61,27 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
     ```
 
 - inside that folder add the log files
+    - install `post-install-cmd`
+    > if you want to show a log on installation only, then add a file name `install.txt` and we will display it only when the package gets installed for the first time.
 
+    | release tag | log file name |
+    | ----------- | ------------- |
+    | *           | install.txt   |
+
+    - uninstall `pre-package-uninstall`
+    > if you want to show a log on un-installation only, then add a file name `uninstall.txt` and we will display it only when the package gets uninstalled.
+
+    | release tag | log file name |
+    | ----------- | ------------- |
+    | *           | uninstall.txt |
+
+    - update `post-update-cmd`
     > the version have to be equal "==" to the release tag because we check against that version b4 showing the log.
+    >
     > this is useful in-case you didn't add a changeLog for the current published version.
 
     | release tag | log file name |
-    |-------------|---------------|
+    | ----------- | ------------- |
     | v1.0.0      | v1.0.0.txt    |
 
 <br>
@@ -63,5 +89,4 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
 ## Notes
 
 - we don't use any parser for the log file, so whatever you write in the file will be displayed to the user as it is.
-
-- This is more of a **utility** package directed towards developers & to get the best of it you have to add it to your package, however to test it you can install it like any other package & run `composer dump-autoload` afterwards.
+- This is more of a **utility** package directed towards developers & to get the best of it you have to add it to your package, however to test it you can install it like any other package & you would get a message like the screenshot above.
