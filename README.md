@@ -1,5 +1,5 @@
 <h1 align="center">
-    PackageChangeLog V2
+    PackageChangeLog
     <br>
     <a href="https://packagist.org/packages/ctf0/package-changelog"><img src="https://img.shields.io/packagist/v/ctf0/package-changelog.svg" alt="Latest Stable Version" /></a> <a href="https://packagist.org/packages/ctf0/package-changelog"><img src="https://img.shields.io/packagist/dt/ctf0/package-changelog.svg" alt="Total Downloads" /></a>
 </h1>
@@ -17,6 +17,13 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
 ## Installation
 
 - `composer require ctf0/package-changelog`
+- (Laravel < 5.5) add the service provider to `config/app.php`
+
+    ```php
+    'providers' => [
+        ctf0\PackageChangeLog\PackageChangeLogServiceProvider::class,
+    ]
+    ```
 - under `composer.json` we will auto add
     + check [composer docs](https://getcomposer.org/doc/articles/scripts.md#what-is-a-script-) for more info
 
@@ -33,7 +40,7 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
         ]
     }
     ```
-
+    
 <br>
 
 ## Usage
@@ -41,17 +48,17 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
 - inside your **"package"** composer.json
     + add the package as a dependency
     + add `"changeLog": "log_folder_name"` to extra
-
-  ```js
-  "require": {
-      // ...
-      "ctf0/package-changelog": "^2.0"
-  },
-  "extra": {
-      // ...
-      "changeLog": "logs"
-  }
-  ```
+    
+    ```js
+    "require": {
+        // ...
+        "ctf0/package-changelog": "^2.0"
+    },
+    "extra": {
+        // ...
+        "changeLog": "logs"
+    }
+    ```
 
 - inside that folder add the log files
     - install `post-install-cmd`
@@ -70,6 +77,7 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
 
     - update `post-update-cmd`
     > the version have to be equal "==" to the release tag because we check against that version b4 showing the log.
+    >
     > this is useful in-case you didn't add a changeLog for the current published version.
 
     | release tag | log file name |
@@ -81,5 +89,4 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
 ## Notes
 
 - we don't use any parser for the log file, so whatever you write in the file will be displayed to the user as it is.
-
 - This is more of a **utility** package directed towards developers & to get the best of it you have to add it to your package, however to test it you can install it like any other package & you would get a message like the screenshot above.
