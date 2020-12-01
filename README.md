@@ -36,6 +36,26 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
     
 <br>
 
+## Upgrading to v:v:
+
+- remove `'App\\Providers\\EventServiceProvider::postAutoloadDump'` from `composer.json`
+- remove 
+    ```
+    /**
+    * "ctf0/package-changelog".
+    */
+    public static function postAutoloadDump(\Composer\Script\Event $event)
+    {
+       if (class_exists('ctf0\PackageChangeLog\Ops')) {
+           return \ctf0\PackageChangeLog\Ops::postAutoloadDump($event);
+       }
+    }
+    ```
+    from `app\Providers\EventServiceProvider`
+- remove the package cache `storage/framework/cache/data/dd`
+
+<br>
+
 ## Usage
 
 - inside your **"package"** composer.json
