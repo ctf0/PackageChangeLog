@@ -9,14 +9,15 @@ trait Messages
      *
      * @param mixed $event
      * @param mixed $type
+     * @param mixed $showEmptyLog
      *
      * @return [type] [description]
      */
-    public function buildLogs($type = null)
+    public function buildLogs($type = null, $showEmptyLog = true)
     {
-        $vendorPath = base_path('vendor');
-        $refPath = '/composer/installed.json';
-        $packages = [];
+        $vendorPath = \base_path('vendor');
+        $refPath    = '/composer/installed.json';
+        $packages   = [];
 
         if (file_exists($path = "{$vendorPath}{$refPath}")) {
             $installed = json_decode(file_get_contents($path), true);
@@ -28,19 +29,19 @@ trait Messages
 
         foreach ($packages as $one) {
             if (isset($one['extra']['changeLog'])) {
-                $name = $this->format($vendorPath, $one['name']);
-                $log_path = $one['extra']['changeLog'];
-                $version = $one['version'];
+                $name         = $this->format($vendorPath, $one['name']);
+                $log_path     = $one['extra']['changeLog'];
+                $version      = $one['version'];
                 $package_path = "$vendorPath/{$name}";
-                $log_file = $type
-                    ? glob("$package_path/$log_path/$type.*")
-                    : glob("$package_path/$log_path/$version.*");
+                $log_file     = $type
+                                    ? glob("$package_path/$log_path/$type.*")
+                                    : glob("$package_path/$log_path/$version.*");
 
                 if (!$log_file) {
                     continue;
                 }
 
-                $no_log = false;
+                $no_log      = false;
                 $log_content = file_get_contents($log_file[0]);
 
                 $this->header("\"$name\" {$version} ChangeLog:");
@@ -51,7 +52,7 @@ trait Messages
             }
         }
 
-        if ($no_log) {
+        if ($no_log && $showEmptyLog) {
             $this->header('No Available ChangeLogs At The Moment');
         }
 

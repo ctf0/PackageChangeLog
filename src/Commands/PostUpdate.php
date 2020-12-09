@@ -9,7 +9,7 @@ class PostUpdate extends Command
 {
     use Messages;
 
-    protected $signature = 'pcl:post-update';
+    protected $signature   = 'pcl:post-update';
     protected $description = 'package-changelog post-update';
 
     /**

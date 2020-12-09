@@ -9,7 +9,7 @@ class PostInstall extends Command
 {
     use Messages;
 
-    protected $signature = 'pcl:post-install';
+    protected $signature   = 'pcl:post-install';
     protected $description = 'package-changelog post-install';
 
     /**
@@ -19,6 +19,6 @@ class PostInstall extends Command
      */
     public function handle()
     {
-        return $this->buildLogs('install');
+        return $this->buildLogs('install', false);
     }
 }

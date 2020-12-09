@@ -9,7 +9,7 @@ class PreUninstall extends Command
 {
     use Messages;
 
-    protected $signature = 'pcl:pre-uninstall';
+    protected $signature   = 'pcl:pre-uninstall';
     protected $description = 'package-changelog pre-uninstall';
 
     /**
@@ -19,6 +19,6 @@ class PreUninstall extends Command
      */
     public function handle()
     {
-        return $this->buildLogs('uninstall');
+        return $this->buildLogs('uninstall', false);
     }
 }
