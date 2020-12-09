@@ -11,7 +11,8 @@ class PackageChangeLogServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        if (file_exists(base_path() . '/composer.json') &&
+        if (
+            file_exists(\base_path() . '/composer.json') &&
             !$this->app['cache']->store('file')->has('ct-pcl')
         ) {
             $this->autoReg();
@@ -28,11 +29,7 @@ class PackageChangeLogServiceProvider extends ServiceProvider
 
     protected function autoReg()
     {
-        $comp_file = base_path() . '/composer.json';
-
-        $this->postUpdate($comp_file);
-        $this->postInstall($comp_file);
-        $this->preUninstall($comp_file);
+        $this->doStuff();
 
         // run check once
         $this->app['cache']->store('file')->rememberForever('ct-pcl', function () {

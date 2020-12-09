@@ -1,0 +1,1 @@
+- fix using incorrect event, plz move `@php artisan pcl:post-update` from `scripts:post-autoload-dump` to "scripts:post-update-cmd"

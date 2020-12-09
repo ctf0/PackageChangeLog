@@ -6,65 +6,31 @@ use Illuminate\Support\Str;
 
 trait Init
 {
-    /* -------------------------------------------------------------------------- */
-    /*                                     OPS                                    */
-    /* -------------------------------------------------------------------------- */
-
-    protected function postUpdate($comp_file)
+    protected function doStuff()
     {
-        $search = '@php artisan pcl:post-update';
+        $comp_file  = \base_path() . '/composer.json';
+        $json_data  = file_get_contents($comp_file);
+        $list       = [
+            'post-install'  => 'post-install-cmd',
+            'post-update'   => 'post-update-cmd',
+            'pre-uninstall' => 'pre-package-uninstall',
+        ];
 
-        if (!$this->checkExist($comp_file, $search)) {
-            $data = $search;
-            $res = json_decode(file_get_contents($comp_file), true);
+        $final = json_decode($json_data, true);
 
-            if ($res['scripts']['post-autoload-dump']) {
-                array_push($res['scripts']['post-autoload-dump'], $data);
-                $json = json_encode($res, JSON_PRETTY_PRINT);
-                $final = str_replace('\/', '/', $json);
-                file_put_contents($comp_file, $final);
+        foreach ($list as $cmnd => $event) {
+            $search = "@php artisan pcl:$cmnd";
+
+            if (!Str::contains($json_data, $search)) {
+                isset($final['scripts'][$event])
+                    ? array_push($final['scripts'][$event], $search)
+                    : $final['scripts'][$event] = [$search];
             }
         }
-    }
 
-    protected function postInstall($comp_file)
-    {
-        $search = '@php artisan pcl:post-install';
+        $json  = json_encode($final, JSON_PRETTY_PRINT);
+        $final = str_replace('\/', '/', $json);
 
-        if (!$this->checkExist($comp_file, $search)) {
-            $res = json_decode(file_get_contents($comp_file), true);
-
-            isset($res['scripts']['post-install-cmd'])
-                ? array_push($res['scripts']['post-install-cmd'], $search)
-                : $res['scripts']['post-install-cmd'] = [$search];
-
-            $json = json_encode($res, JSON_PRETTY_PRINT);
-            $final = str_replace('\/', '/', $json);
-            file_put_contents($comp_file, $final);
-        }
-    }
-
-    protected function preUninstall($comp_file)
-    {
-        $search = '@php artisan pcl:pre-uninstall';
-
-        if (!$this->checkExist($comp_file, $search)) {
-            $res = json_decode(file_get_contents($comp_file), true);
-
-            isset($res['scripts']['pre-package-uninstall'])
-                ? array_push($res['scripts']['pre-package-uninstall'], $search)
-                : $res['scripts']['pre-package-uninstall'] = [$search];
-
-            $json = json_encode($res, JSON_PRETTY_PRINT);
-            $final = str_replace('\/', '/', $json);
-            file_put_contents($comp_file, $final);
-        }
-    }
-
-    /* -------------------------------------------------------------------------- */
-
-    protected function checkExist($file, $search)
-    {
-        return Str::contains(file_get_contents($file), $search);
+        return file_put_contents($comp_file, $final);
     }
 }
