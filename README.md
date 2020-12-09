@@ -33,14 +33,15 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
         ]
     }
     ```
-    
+
 <br>
 
 ## Upgrading to v:v:
 
 - remove `'App\\Providers\\EventServiceProvider::postAutoloadDump'` from `composer.json`
-- remove 
-    ```
+- remove
+
+    ```php
     /**
     * "ctf0/package-changelog".
     */
@@ -51,8 +52,9 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
        }
     }
     ```
+
     from `app\Providers\EventServiceProvider`
-- remove the package cache `storage/framework/cache/data/dd`
+- clear the cache `php artisan cache:clear`
 
 <br>
 
@@ -61,7 +63,7 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
 - inside your **"package"** composer.json
     + add the package as a dependency
     + add `"changeLog": "log_folder_name"` to extra
-    
+
     ```js
     "require": {
         // ...
