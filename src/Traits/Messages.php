@@ -7,9 +7,8 @@ trait Messages
     /**
      * [buildLogs description].
      *
-     * @param mixed $event
-     * @param mixed $type
-     * @param mixed $showEmptyLog
+     * @param string|null $type
+     * @param bool        $showEmptyLog
      *
      * @return [type] [description]
      */
