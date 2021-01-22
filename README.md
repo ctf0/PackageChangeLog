@@ -101,6 +101,24 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
 
 <br>
 
+## Uninstall
+
+- for whatever reason you decided to remove the package, make sure to remove all the package scripts under `composer.json` before uninstall
+
+```json
+"scripts": {
+    "post-install-cmd": [
+        "@php artisan pcl:post-install"
+    ],
+    "post-update-cmd": [
+        "@php artisan pcl:post-update"
+    ],
+    "pre-package-uninstall": [
+        "@php artisan pcl:pre-uninstall"
+    ]
+}
+```
+
 ## Notes
 
 - we don't use any parser for the log file, so whatever you write in the file will be displayed to the user as it is.
