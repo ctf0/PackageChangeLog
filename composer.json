@@ -22,6 +22,11 @@
         }
     },
     "extra": {
+        "laravel": {
+            "providers": [
+                "ctf0\\PackageChangeLog\\PackageChangeLogServiceProvider"
+            ]
+        },
         "changeLog": "logs"
     },
     "config": {
