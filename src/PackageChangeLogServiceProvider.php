@@ -21,7 +21,6 @@ class PackageChangeLogServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 \ctf0\PackageChangeLog\Commands\PostInstall::class,
-                \ctf0\PackageChangeLog\Commands\PreUninstall::class,
                 \ctf0\PackageChangeLog\Commands\PostUpdate::class,
             ]);
         }

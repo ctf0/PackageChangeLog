@@ -1,0 +1,1 @@
+- remove `pre-package-uninstall` which was cuzing issues for other packages removal, plz remove `"pre-package-uninstall": [...]` from `scripts`

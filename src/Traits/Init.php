@@ -13,7 +13,6 @@ trait Init
         $list       = [
             'post-install'  => 'post-install-cmd',
             'post-update'   => 'post-update-cmd',
-            'pre-uninstall' => 'pre-package-uninstall',
         ];
 
         $final = json_decode($json_data, true);

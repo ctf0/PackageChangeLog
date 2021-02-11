@@ -27,9 +27,6 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
         ],
         "post-update-cmd": [
             "@php artisan pcl:post-update"
-        ],
-        "pre-package-uninstall": [
-            "@php artisan pcl:pre-uninstall"
         ]
     }
     ```
@@ -83,13 +80,6 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
     | ----------- | ------------- |
     | *           | install.txt   |
 
-    - uninstall `pre-package-uninstall`
-    > if you want to show a log on un-installation only, then add a file name `uninstall.txt` and we will display it only when the package gets uninstalled.
-
-    | release tag | log file name |
-    | ----------- | ------------- |
-    | *           | uninstall.txt |
-
     - update `post-update-cmd`
     > the version have to be equal "==" to the release tag because we check against that version b4 showing the log.
     >
@@ -112,9 +102,6 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
     ],
     "post-update-cmd": [
         "@php artisan pcl:post-update"
-    ],
-    "pre-package-uninstall": [
-        "@php artisan pcl:pre-uninstall"
     ]
 }
 ```
