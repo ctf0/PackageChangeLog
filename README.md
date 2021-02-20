@@ -110,3 +110,9 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
 
 - we don't use any parser for the log file, so whatever you write in the file will be displayed to the user as it is.
 - This is more of a **utility** package directed towards developers & to get the best of it you have to add it to your package, however to test it you can install it like any other package & you would get a message like the screenshot above.
+
+<br>
+
+### Security
+
+If you discover any security-related issues, please email [ctf0-dev@protonmail.com](mailto:ctf0-dev@protonmail.com).
