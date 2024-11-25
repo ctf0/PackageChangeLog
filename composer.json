@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "ctf0\\PackageChangeLog\\": "src"
+            "ivenms\\PackageChangeLog\\": "src"
         }
     },
     "extra": {

@@ -1,6 +1,6 @@
 <?php
 
-namespace ctf0\PackageChangeLog\Traits;
+namespace ivenms\PackageChangeLog\Traits;
 
 trait Messages
 {

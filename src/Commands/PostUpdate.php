@@ -1,9 +1,9 @@
 <?php
 
-namespace ctf0\PackageChangeLog\Commands;
+namespace ivenms\PackageChangeLog\Commands;
 
 use Illuminate\Console\Command;
-use ctf0\PackageChangeLog\Traits\Messages;
+use ivenms\PackageChangeLog\Traits\Messages;
 
 class PostUpdate extends Command
 {

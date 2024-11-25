@@ -1,7 +1,7 @@
 <h1 align="center">
     PackageChangeLog
     <br>
-    <a href="https://packagist.org/packages/ctf0/package-changelog"><img src="https://img.shields.io/packagist/v/ctf0/package-changelog.svg" alt="Latest Stable Version" /></a> <a href="https://packagist.org/packages/ctf0/package-changelog"><img src="https://img.shields.io/packagist/dt/ctf0/package-changelog.svg" alt="Total Downloads" /></a>
+    <a href="https://packagist.org/packages/ivenms/package-changelog"><img src="https://img.shields.io/packagist/v/ivenms/package-changelog.svg" alt="Latest Stable Version" /></a> <a href="https://packagist.org/packages/ivenms/package-changelog"><img src="https://img.shields.io/packagist/dt/ivenms/package-changelog.svg" alt="Total Downloads" /></a>
 </h1>
 
 usually when a package gets updated, the package owner could possibly add/change/remove something from the configuration file,
@@ -16,7 +16,7 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
 
 ## Installation
 
-- `composer require ctf0/package-changelog`
+- `composer require ivenms/package-changelog`
 - after installation, package will auto-register the below to `composer.json`
     + check [composer docs](https://getcomposer.org/doc/articles/scripts.md#what-is-a-script-) for more info
 
@@ -40,12 +40,12 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
 
     ```php
     /**
-    * "ctf0/package-changelog".
+    * "ivenms/package-changelog".
     */
     public static function postAutoloadDump(\Composer\Script\Event $event)
     {
-       if (class_exists('ctf0\PackageChangeLog\Ops')) {
-           return \ctf0\PackageChangeLog\Ops::postAutoloadDump($event);
+       if (class_exists('ivenms\PackageChangeLog\Ops')) {
+           return \ivenms\PackageChangeLog\Ops::postAutoloadDump($event);
        }
     }
     ```
@@ -64,7 +64,7 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
     ```js
     "require": {
         // ...
-        "ctf0/package-changelog": "^2.0"
+        "ivenms/package-changelog": "^2.0"
     },
     "extra": {
         // ...
@@ -115,4 +115,4 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
 
 ### Security
 
-If you discover any security-related issues, please email [ctf0-dev@protonmail.com](mailto:ctf0-dev@protonmail.com).
+If you discover any security-related issues, please email [ivenms-dev@protonmail.com](mailto:ivenms-dev@protonmail.com).

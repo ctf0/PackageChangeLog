@@ -1,6 +1,6 @@
 <?php
 
-namespace ctf0\PackageChangeLog\Traits;
+namespace ivenms\PackageChangeLog\Traits;
 
 use Illuminate\Support\Str;
 

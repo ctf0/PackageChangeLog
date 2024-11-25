@@ -1,8 +1,8 @@
 <?php
 
-namespace ctf0\PackageChangeLog;
+namespace ivenms\PackageChangeLog;
 
-use ctf0\PackageChangeLog\Traits\Init;
+use ivenms\PackageChangeLog\Traits\Init;
 use Illuminate\Support\ServiceProvider;
 
 class PackageChangeLogServiceProvider extends ServiceProvider
@@ -20,8 +20,8 @@ class PackageChangeLogServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->commands([
-                \ctf0\PackageChangeLog\Commands\PostInstall::class,
-                \ctf0\PackageChangeLog\Commands\PostUpdate::class,
+                \ivenms\PackageChangeLog\Commands\PostInstall::class,
+                \ivenms\PackageChangeLog\Commands\PostUpdate::class,
             ]);
         }
     }
