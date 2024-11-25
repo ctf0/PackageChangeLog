@@ -1,7 +1,7 @@
 {
-    "name": "ctf0/package-changelog",
+    "name": "ivenms/package-changelog",
     "description": "show package changeLog on install/update",
-    "homepage": "https://github.com/ctf0/PackageChangeLog",
+    "homepage": "https://github.com/ivenms/PackageChangeLog",
     "license": "MIT",
     "keywords": [
         "package-changelog"
@@ -22,18 +22,12 @@
     "extra": {
         "laravel": {
             "providers": [
-                "ctf0\\PackageChangeLog\\PackageChangeLogServiceProvider"
+                "ivenms\\PackageChangeLog\\PackageChangeLogServiceProvider"
             ]
         },
         "changeLog": "logs"
     },
     "config": {
         "sort-packages": true
-    },
-    "funding": [
-        {
-            "type": "github",
-            "url": "https://github.com/sponsors/ctf0"
-        }
-    ]
+    }
 }
