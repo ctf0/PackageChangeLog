@@ -4,17 +4,15 @@
     "homepage": "https://github.com/ctf0/PackageChangeLog",
     "license": "MIT",
     "keywords": [
-        "ctf0",
         "package-changelog"
     ],
     "authors": [
         {
-            "name": "Muah",
-            "email": "muah003@gmail.com"
+            "name": "Iven Simon",
         }
     ],
     "require": {
-        "illuminate/support": ">=7.0 <11.0"
+        "illuminate/support": ">=7.0 <=11.0"
     },
     "autoload": {
         "psr-4": {
