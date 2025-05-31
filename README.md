@@ -33,7 +33,7 @@ Therefor **PackageChangeLog** was made, to help developers keep their packages a
 
 <br>
 
-## Upgrading to v:v:
+## Upgrading to v2
 
 - remove `'App\\Providers\\EventServiceProvider::postAutoloadDump'` from `composer.json`
 - remove
